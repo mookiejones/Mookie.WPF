@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "Mookie.WPF.sln",
+    "projects": [
+      "Mookie.WPF\\Mookie.WPF.csproj",
+      "Mookie.WPF.Shared\\Mookie.WPF.Shared.shproj"
+    ]
+  }
+}

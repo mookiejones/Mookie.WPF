@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net472;net6.0-windows</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  
+</PropertyGroup>
+
+  <Import Project="..\Mookie.WPF.Shared\Mookie.WPF.Shared.projitems" Label="Shared" />
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
+    <Reference Include="System.Runtime.Remoting" />
+  </ItemGroup>
+
+</Project>
