@@ -3,7 +3,7 @@
   <Copyright>Copyright © 2023</Copyright>
     <Company>Mookie</Company>
 
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <SuppressNETCoreSdkPreviewMessage>false</SuppressNETCoreSdkPreviewMessage>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>

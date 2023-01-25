@@ -5,11 +5,10 @@ VisualStudioVersion = 17.5.33209.295
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mookie.WPF", "Mookie.WPF\Mookie.WPF.csproj", "{C55CF51B-82D2-45F1-A307-4A2F53A57D17}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Mookie.WPF.Shared", "Mookie.WPF.Shared\Mookie.WPF.Shared.shproj", "{11C87443-84E1-406C-BB0F-07C5E129B736}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{607C563C-C64B-44D6-850F-931234818CFA}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -29,9 +28,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3C28AC81-AA5A-4BC7-907A-DC2FD0618B6F}
-	EndGlobalSection
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Mookie.WPF.Shared\Mookie.WPF.Shared.projitems*{11c87443-84e1-406c-bb0f-07c5e129b736}*SharedItemsImports = 13
-		Mookie.WPF.Shared\Mookie.WPF.Shared.projitems*{c55cf51b-82d2-45f1-a307-4a2f53a57d17}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
