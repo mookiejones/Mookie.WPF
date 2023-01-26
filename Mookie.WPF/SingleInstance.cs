@@ -7,12 +7,16 @@ using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading;
 using System.Windows.Threading;
-#if NET462_OR_GREATER
+#if NET46_OR_GREATER
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Ipc;
 
 namespace Mookie.WPF
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TApplication"></typeparam>
     public static class SingleInstance<TApplication> where TApplication : Application, ISingleInstanceApp
     {
         private const string Delimiter = ":";
@@ -61,36 +65,33 @@ namespace Mookie.WPF
 
         private static IList<string> GetCommandLineArgs(string uniqueApplicationName)
         {
-            string[] array = null;
             if (AppDomain.CurrentDomain.ActivationContext == null)
-            {
-                array = Environment.GetCommandLineArgs();
-            }
+                return Environment.GetCommandLineArgs()?.ToList() ?? new string[0].ToList();
+
             else
             {
-                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    uniqueApplicationName);
+                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),uniqueApplicationName);
                 string path2 = Path.Combine(path, "cmdline.txt");
                 if (File.Exists(path2))
                 {
                     try
                     {
+                        string text;
                         using (TextReader textReader = new StreamReader(path2, Encoding.Unicode))
                         {
-                            array = NativeMethods.CommandLineToArgvW(textReader.ReadToEnd());
-                        }
+                            text = textReader.ReadToEnd();
+                             }
                         File.Delete(path2);
+                        return NativeMethods.CommandLineToArgvW(text)?.ToList() ?? new string[0].ToList();
+
                     }
                     catch (IOException)
                     {
+                        throw;
                     }
                 }
             }
-            if (array == null)
-            {
-                array = new string[0];
-            }
-            return new List<string>(array);
+            return new string[0].ToList();
         }
 
         [Localizable(false)]
@@ -140,11 +141,11 @@ namespace Mookie.WPF
 
         private static void ActivateFirstInstance(IList<string> args)
         {
-            if (Application.Current != null)
-            {
-                TApplication tApplication = (TApplication)Application.Current;
-                _ = tApplication.SignalExternalCommandLineArgs(args);
-            }
+            if (Application.Current == null)
+                return;
+
+            TApplication tApplication = (TApplication)Application.Current;
+            _ = tApplication.SignalExternalCommandLineArgs(args);
         }
 
         private class IpcRemoteService : MarshalByRefObject
@@ -155,10 +156,7 @@ namespace Mookie.WPF
                         new DispatcherOperationCallback(ActivateFirstInstanceCallback), args));
             }
 
-            public override object InitializeLifetimeService()
-            {
-                return null;
-            }
+            public override object InitializeLifetimeService() => null;
         }
     }
 }

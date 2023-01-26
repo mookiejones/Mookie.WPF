@@ -10,7 +10,7 @@ namespace Mookie.WPF.Utilities
 {
     public static class ImageHelper
     {
-#if NET462_OR_GREATER
+#if NET46_OR_GREATER
         private static BitmapImage LoadBitmap(Bitmap img)
         {
             BitmapImage bitmapImage = new BitmapImage();
@@ -36,18 +36,15 @@ namespace Mookie.WPF.Utilities
 
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static BitmapImage LoadBitmap(string fileName)
         {
-            BitmapImage result;
+             
 
-#if DEBUG
-            FileInfo file = new System.IO.FileInfo(fileName);
-            if (!file.Exists)
-            {
-                Console.WriteLine(file);
-            }
-#endif
             try
             {
                 if (File.Exists(fileName))
@@ -55,8 +52,8 @@ namespace Mookie.WPF.Utilities
                     FileInfo fileInfo = new System.IO.FileInfo(fileName);
                     BitmapImage bitmapImage = new BitmapImage(new Uri(fileInfo.FullName));
                     bitmapImage.Freeze();
-                    result = bitmapImage;
-                    return result;
+                     
+                    return bitmapImage;
                 }
             }
             catch (ArgumentException)
@@ -65,8 +62,8 @@ namespace Mookie.WPF.Utilities
             catch (IOException)
             {
             }
-            result = null;
-            return result;
+            
+            return null;
         }
 
     }

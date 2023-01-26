@@ -11,6 +11,11 @@ namespace Mookie.WPF.Shared.Helpers
     {
         private const string CHECK_ENVIRONMENT = "This version of {0} requires .Net 4.0. Your are using:{1}";
         private const string WINDIR = "WINDIR";
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
         [Localizable(false)]
         public static bool CheckEnvironment(this Application app)
         {

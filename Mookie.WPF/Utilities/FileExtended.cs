@@ -11,11 +11,23 @@ namespace Mookie.WPF.Utilities
     public static class FileExtended
     {
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static FileInfo GetFileInfo(this FileInfo fi, string path)
         {
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path1"></param>
+        /// <param name="path2"></param>
+        /// <returns></returns>
         public static bool AreEqual(string path1, string path2)
         {
             string fullName = new FileInfo(path1).FullName;
@@ -23,6 +35,14 @@ namespace Mookie.WPF.Utilities
             return fullName.Equals(fullName2, StringComparison.InvariantCultureIgnoreCase);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourcePath"></param>
+        /// <param name="targetPath"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
         public static string CopyIfExisting(string sourcePath, string targetPath)
         {
             if (!File.Exists(sourcePath))
@@ -48,6 +68,12 @@ namespace Mookie.WPF.Utilities
             return targetPath;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceDirectory"></param>
+        /// <param name="pattern"></param>
+        /// <param name="targetDirectory"></param>
         public static void CopyIfExisting(string sourceDirectory, string pattern, string targetDirectory)
         {
             string[] files = Directory.GetFiles(sourceDirectory, pattern);
@@ -58,11 +84,18 @@ namespace Mookie.WPF.Utilities
             }
         }
 
-        public static void DeleteIfExisting(string path)
-        {
-            DeleteIfExisting(path, true);
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        public static void DeleteIfExisting(string path) => DeleteIfExisting(path, true);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="force"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public static void DeleteIfExisting(string path, bool force)
         {
             if (path == null)

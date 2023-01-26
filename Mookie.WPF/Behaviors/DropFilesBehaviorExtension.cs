@@ -56,11 +56,21 @@ namespace Mookie.WPF.Behaviors
                 filesDropped.OnFilesDropped(files);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="value"></param>
         public static void SetIsEnabled(DependencyObject element, bool value)
         {
             element.SetValue(IsEnabledProperty, value);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public static bool GetIsEnabled(DependencyObject element)
         {
             return (bool)element.GetValue(IsEnabledProperty);

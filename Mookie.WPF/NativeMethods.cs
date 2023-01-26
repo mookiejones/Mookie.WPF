@@ -7,9 +7,20 @@ using System.Text;
 
 namespace Mookie.WPF
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Localizable(false), SuppressUnmanagedCodeSecurity]
     public static class NativeMethods
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="uMsg"></param>
+        /// <param name="wParam"></param>
+        /// <param name="lParam"></param>
+        /// <param name="handled"></param>
+        /// <returns></returns>
         public delegate IntPtr MessageHandler(WM uMsg, IntPtr wParam, IntPtr lParam, out bool handled);
 
         [Localizable(false)]
@@ -21,9 +32,21 @@ namespace Mookie.WPF
         [DllImport("kernel32.dll", EntryPoint = "LocalFree", SetLastError = true)]
         private static extern IntPtr _LocalFree(IntPtr hMem);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="keyCode"></param>
+        /// <returns></returns>
         [DllImport("user32.dll")]
         public static extern short GetKeyState(int keyCode);
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cmdLine"></param>
+        /// <returns></returns>
+        /// <exception cref="Win32Exception"></exception>
         public static string[] CommandLineToArgvW(string cmdLine)
         {
             IntPtr intPtr = IntPtr.Zero;
