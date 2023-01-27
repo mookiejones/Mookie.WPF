@@ -7,3 +7,5 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("https://github.com/mookiejones/Mookie.WPF", "Mookie.WPF")]
 [assembly: XmlnsDefinition("https://github.com/mookiejones/Mookie.WPF", "Mookie.WPF.Helpers")]
 [assembly: XmlnsDefinition("https://github.com/mookiejones/Mookie.WPF", "Mookie.WPF.Behaviors")]
+[assembly: XmlnsDefinition("https://github.com/mookiejones/Mookie.WPF", "Mookie.WPF.Utilities")]
+
